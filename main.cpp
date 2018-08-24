@@ -356,13 +356,13 @@ extern "C" void* ThreadStats(void*) {
   } while(1);
 }
 
-static const string mainnet_seeds[] = {"static-dnsseed.darkcoin.io", "static-dnsseed.dashdot.io", ""};
-static const string testnet_seeds[] = {"static-testnet-seed.darkcoin.io", "static-testnet-seed.dashdot.io", ""};
+static const string mainnet_seeds[] = {"static-dnsseed.rdctoken.io", ""};
+static const string testnet_seeds[] = {"static-testnet-seed.rdctoken.io", ""};
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
   if (!fTestNet){
-    db.Add(CService("darkcoin.io", 9999), true);
+    db.Add(CService("rdctoken.io", 57920), true);
   }
   do {
     for (int i=0; seeds[i] != ""; i++) {
@@ -405,10 +405,10 @@ int main(int argc, char **argv) {
   bool fDNS = true;
   if (opts.fUseTestNet) {
       printf("Using testnet.\n");
-      pchMessageStart[0] = 0xce;
-      pchMessageStart[1] = 0xe2;
-      pchMessageStart[2] = 0xca;
-      pchMessageStart[3] = 0xff;
+      pchMessageStart[0] = 0x25;
+      pchMessageStart[1] = 0x69;
+      pchMessageStart[2] = 0xaa;
+      pchMessageStart[3] = 0x12;
       seeds = testnet_seeds;
       fTestNet = true;
   }
