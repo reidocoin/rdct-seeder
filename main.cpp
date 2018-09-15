@@ -356,13 +356,13 @@ extern "C" void* ThreadStats(void*) {
   } while(1);
 }
 
-static const string mainnet_seeds[] = {"static-dnsseed.rdctoken.io", ""};
-static const string testnet_seeds[] = {"static-testnet-seed.rdctoken.io", ""};
+static const string mainnet_seeds[] = {"seed1.rdctoken.io", ""};
+static const string testnet_seeds[] = {"testnet-seed1.rdctoken.io", ""};
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
   if (!fTestNet){
-    db.Add(CService("rdctoken.io", 57920), true);
+    db.Add(CService("explorer.rdctoken.io", 49846), true);
   }
   do {
     for (int i=0; seeds[i] != ""; i++) {
